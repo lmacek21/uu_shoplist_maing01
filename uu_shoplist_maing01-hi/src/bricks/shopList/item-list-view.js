@@ -75,7 +75,7 @@ const ItemListView = createVisualComponent({
             item={item}
             onDelete={handleDelete}
             onUpdate={handleUpdate}
-            style={{ width: 640, margin: "24px auto" }}
+            style={{ width: 400, margin: "5px auto" }}
           />
         ))}
       </div>

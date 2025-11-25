@@ -1,9 +1,9 @@
 //@@viewOn:imports
-import { createComponent, Utils } from "uu5g05";
+import { createComponent, Utils, useState } from "uu5g05";
 import Config from "./config/config";
 //@@viewOff:imports
 
-let itemList = [
+let initialItemList = [
   {
     id:Utils.String.generateId(),
     name:"Chicken",
@@ -36,8 +36,24 @@ const ItemListProvider = createComponent({
 
   render(props) {
     //@@viewOn:private
+    const [itemList, setItemList] = useState(initialItemList);
+
     function remove(item) {
-      itemList = itemList.filter((i) => i.id !== item.id);
+      setItemList((prevItemList) => prevItemList.filter((i) => i.id !== item.id))
+    }
+
+    function create(values) {
+      const item = {
+        ...values,
+        id: Utils.String.generateId(),
+        uuIdentityName: "Hardcoded User",
+        sys: {
+          cts: new Date().toISOString(),
+        },
+      };
+
+      setItemList((prevItemList) => [...prevItemList, item]);
+      return item;
     }
 
     function update() {
@@ -46,7 +62,7 @@ const ItemListProvider = createComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const value = { itemList, remove, update };
+    const value = { itemList, remove, update, create };
     return typeof props.children === "function" ? props.children(value) : props.children;
     //@@viewOff:render
   },
