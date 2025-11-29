@@ -3,27 +3,24 @@ import { createComponent, Utils, useState } from "uu5g05";
 import Config from "./config/config";
 //@@viewOff:imports
 
-let initialItemList = [
+let initialMemberList = [
   {
     id:Utils.String.generateId(),
-    name:"Chicken",
-    status:"Unresolved"
+    name:"Lubomir Macek",
   },
   {
     id:Utils.String.generateId(),
-    name:"Banana",
-    status:"Unresolved"
+    name:"Martin Araon",
   },
   {
     id:Utils.String.generateId(),
-    name:"Apple",
-    status:"Unresolved"
+    name:"Peter Jonhhae",
   },
 ]
 
-const ItemListProvider = createComponent({
+const MemberListProvider = createComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "ItemListProvider",
+  uu5Tag: Config.TAG + "MemberListProvider",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -36,14 +33,14 @@ const ItemListProvider = createComponent({
 
   render(props) {
     //@@viewOn:private
-    const [itemList, setItemList] = useState(initialItemList);
+    const [memberList, setMemberList] = useState(initialMemberList);
 
-    function remove(item) {
-      setItemList((prevItemList) => prevItemList.filter((i) => i.id !== item.id))
+    function remove(member) {
+      setMemberList((prevMemberList) => prevMemberList.filter((m) => m.id !== member.id))
     }
 
     function create(values) {
-      const item = {
+      const member = {
         ...values,
         id: Utils.String.generateId(),
         uuIdentityName: "Hardcoded User",
@@ -52,23 +49,20 @@ const ItemListProvider = createComponent({
         },
       };
 
-      setItemList((prevItemList) => [...prevItemList, item]);
-      return item;
+      setMemberList((prevMemberList) => [...prevMemberList, member]);
+      return member;
     }
 
-    function update() {
-      throw new Error("Item update is not implemented yet.");
-    }
     //@@viewOff:private
 
     //@@viewOn:render
-    const value = { itemList, remove, update, create };
+    const value = { memberList, remove, create };
     return typeof props.children === "function" ? props.children(value) : props.children;
     //@@viewOff:render
   },
 });
 
 //@@viewOn:exports
-export { ItemListProvider };
-export default ItemListProvider;
+export { MemberListProvider };
+export default MemberListProvider;
 //@@viewOff:exports

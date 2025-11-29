@@ -1,5 +1,6 @@
 import { Environment, Utils } from "uu5g05";
 import Spa from "./core/spa.js";
+import "calls";
 
 // propagate app version into environment
 Environment["appVersion"] = process.env.VERSION;

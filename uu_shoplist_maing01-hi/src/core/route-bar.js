@@ -1,7 +1,7 @@
 //@@viewOn:imports
-import { createVisualComponent, Lsi, useRoute } from "uu5g05";
+import { createVisualComponent, Utils, useLsi, useRoute } from "uu5g05";
+import { useSubAppData } from "uu_plus4u5g02";
 import Plus4U5App from "uu_plus4u5g02-app";
-
 import Config from "./config/config.js";
 import importLsi from "../lsi/import-lsi.js";
 //@@viewOff:imports
@@ -21,9 +21,7 @@ const RouteBar = createVisualComponent({
   //@@viewOff:statics
 
   //@@viewOn:propTypes
-  propTypes: {
-    ...Plus4U5App.PositionBar.propTypes,
-  },
+  propTypes: {},
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
@@ -33,21 +31,22 @@ const RouteBar = createVisualComponent({
   render(props) {
     //@@viewOn:private
     const [, setRoute] = useRoute();
+    const subAppDataObject = useSubAppData();
+    const lsi = useLsi(importLsi, [RouteBar.uu5Tag]);
+    console.log(RouteBar.uu5Tag)
 
-    const actionList = [
-      {
-        children: <Lsi import={importLsi} path={["Menu", "home"]} />,
-        onClick: () => setRoute("home"),
-      },
-      {
-        children: <Lsi import={importLsi} path={["Menu", "items"]} />,
-        onClick: () => setRoute("items"),
-      },
+    const appActionList = [
+      { children: lsi.home, onClick: () => setRoute("home") },
+      { children: lsi.shoplists, onClick: () => setRoute("shoplists") },
     ];
     //@@viewOff:private
 
     //@@viewOn:render
-    return <Plus4U5App.PositionBar actionList={actionList} {...props} />;
+    return (
+      <Plus4U5App.RouteBar appActionList={appActionList} {...props}>
+        <Plus4U5App.RouteHeader title={Utils.String.format(subAppDataObject.data.name)} />
+      </Plus4U5App.RouteBar>
+    );
     //@@viewOff:render
   },
 });

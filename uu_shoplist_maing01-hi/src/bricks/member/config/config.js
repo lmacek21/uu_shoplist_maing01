@@ -1,7 +1,7 @@
 import { Utils } from "uu5g05";
 import Config from "../../../config/config.js";
 
-const TAG = Config.TAG + "Shoplist.";
+const TAG = Config.TAG + "Member.";
 
 export default {
   ...Config,

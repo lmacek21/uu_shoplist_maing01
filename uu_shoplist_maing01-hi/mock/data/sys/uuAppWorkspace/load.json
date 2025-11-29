@@ -1,0 +1,64 @@
+{
+  "data": {
+    "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+    "id": "5c9103df323cc0000c303009",
+    "sys": {
+      "cts": "2019-03-19T14:59:43.847Z",
+      "mts": "2020-04-16T13:55:18.896Z",
+      "rev": 4
+    },
+    "state": "active",
+    "name": "Demo uuShoplist",
+    "userList": [
+      {
+        "name": "Lubomir Macek",
+        "uuIdentity": "3298-1761-1"
+      },
+      {
+        "name": "Lena Harper",
+        "uuIdentity": "4821-9934-1"
+      },
+      {
+        "name": "Marcus Trent",
+        "uuIdentity": "7732-1148-2"
+      },
+      {
+        "name": "Ava Sinclair",
+        "uuIdentity": "1298-5674-3"
+      },
+      {
+        "name": "Dorian Wells",
+        "uuIdentity": "6502-8811-1"
+      },
+      {
+        "name": "Sophie Calder",
+        "uuIdentity": "9981-2347-2"
+      },
+      {
+        "name": "Elias Monroe",
+        "uuIdentity": "3175-7629-4"
+      },
+      {
+        "name": "Chloe Ramirez",
+        "uuIdentity": "5400-2219-3"
+      },
+      {
+        "name": "Grayson Pierce",
+        "uuIdentity": "8634-9044-1"
+      },
+      {
+        "name": "Isla Davenport",
+        "uuIdentity": "2033-7188-2"
+      },
+      {
+        "name": "Caleb Whitmore",
+        "uuIdentity": "7199-5502-3"
+      }
+    ]
+  },
+  "sysData": {
+    "profileData": {
+      "uuIdentityProfileList": ["Authorities", "Executives", "Readers"]
+    }
+  }
+}

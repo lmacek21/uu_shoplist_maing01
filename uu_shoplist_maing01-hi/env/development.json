@@ -2,7 +2,7 @@
   "port": 1234,
   "autoOpenInBrowser": false,
   "basePath": "/uu-shoplist-maing01/0/",
-  "useMockData": false,
+  "useMockData": true,
   "uu5Environment": {
     "uu5g05_trustedUriRegExp": "^https?://localhost(:[0-9]+)?/|^https://([a-z][a-z0-9\\-]{0,61}[a-z0-9][.]|[a-z][.])?plus4u[.]net(:[0-9]+)?(?=[/#?]|$)",
     "uu_app_oidc_providers_oidcg02_uri": "https://uuapp-dev.plus4u.net/uu-oidc-maing02/eca71064ecce44b0a25ce940eb8f053d/oidc",

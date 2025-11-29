@@ -8,6 +8,10 @@
     "welcome": "Vítejte",
     "myIntro": "Toto je velmi...got you...nauč se anglicky: This is a very simple application for creating and mantaining shopping lists.... What are you waiting for? ...Create your list and go shopping :)"
   },
+  "Details": {
+    "memberList": "Členové",
+    "itemList": "Položky"
+  },
   "InitAppWorkspace": {
     "missedInitFields": "Pole „mode“ , „data.locationId“, „data.locationId“ a „data.uuTerritoryBaseUri jsou povinná!",
     "retryFormHeaderInfo": "<uu5string/>Vaše uuApp běží, ale vyžaduje inicializaci. Pokud potřebujete pomoc s vyplněním tohoto formuláře, viz  <Uu5Elements.Link target=\"_blank\" href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/48f350f7c3a9450bb3941c4d9ecbd874/book/page?code=99067457\">Documentation</Uu5Elements.Link>.",
@@ -39,9 +43,55 @@
     "beingInitializedHeader": "uuAppWorkspace je právě inicializován",
     "beingInitializedAuthorizedInfo": "You are authorized to initialize #mtpo. To change initialization, click \"Retry\" or \"Rollback\". To get more info, click \"Get Info\"."
   },
-  "Menu": {
-    "home": "Vítejte",
-    "about": "O aplikaci",
-    "items": "Položky"
+  "UuShoplist.Core.RouteBar": {
+    "home": "Vitajte",
+    "shoplists": "Nakupne zoznamy"
+  },
+  "UuShoplist.Shoplist.ListView": {
+    "deleteDone": "Nákupní seznam {0} byl smazán.",
+    "deleteFail": "Smazání nákupního seznamu selhalo!",
+    "updateFail": "Upravení vtipu selhalo!",
+    "pageLoadFail": "Načítání vtipů selhalo!",
+    "noJokes": "Žádné Položky"
+  },
+  "UuShoplist.Item.ItemListView": {
+    "deleteDone": "Položka {0} byla smazána.",
+    "deleteFail": "Smazání vtipu selhalo!",
+    "updateFail": "Upravení vtipu selhalo!",
+    "pageLoadFail": "Načítání vtipů selhalo!",
+    "noJokes": "Žádné položky",
+    "heading": "Položky"
+  },
+  "UuShoplist.Shoplist.Tile": {
+    "averageRating": "Průměrné hodnocení: {0} / 5",
+    "archiveBtn": "Archivovat",
+    "deleteBtn": "Smazat",
+    "deleteTip": "Smazat",
+    "updateTip": "Upravit"
+  },
+  "UuShoplist.Item.ItemTile": {
+    "averageRating": "Průměrné hodnocení: {0} / 5",
+    "deleteTip": "Smazat",
+    "updateTip": "Upravit"
+  },
+  "UuShoplist.Shoplist.CreateView": {
+    "createJoke": "Přidat vtip",
+    "createFail": "Vytvoření vtipu selhalo!",
+    "createDone": "Vtip {0} byl vytvořen."
+  },
+  "UuShoplist.Shoplist.CreateForm": {
+    "name": "Název",
+    "member": "Člen",
+    "image": "Obrázek",
+    "text": "Text",
+    "cancel": "Zrušit",
+    "submit": "Vytvořit vtip",
+    "textOrImage": "Text nebo obrázek musí být vyplněn."
+  },
+  "UuShoplist.Shoplist.UpdateModal": {
+    "name": "Název",
+    "cancel": "Zrušit",
+    "submit": "Upravit",
+    "required": "Název musí být vyplněn."
   }
 }

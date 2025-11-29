@@ -1,0 +1,115 @@
+{
+  "itemList": [
+    {
+      "name": "Christmas grocery",
+      "visibility": true,
+      "uuIdentity": "3298-1761-1",
+      "uuIdentityName": "Lubomir Macek",
+      "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+      "memberList": [],
+      "status": "open",
+      "sys": { "cts": "2019-09-17T12:29:46.205Z", "mts": "2020-04-05T22:45:04.806Z", "rev": 1 },
+      "id": "af12c9d82c1a4fe2a1130b91"
+    },
+    {
+      "name": "Weekend grocery",
+      "visibility": true,
+      "uuIdentity": "8122-4419-2",
+      "uuIdentityName": "Sophie Keller",
+      "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+      "memberList": [],
+      "sys": { "cts": "2020-02-11T09:12:30.112Z", "mts": "2021-01-02T15:28:55.341Z", "rev": 1 },
+      "id": "c5f998a0135e4a1e9f66b0ea"
+    },
+    {
+      "name": "Random grocery",
+      "visibility": true,
+      "uuIdentity": "5599-3244-3",
+      "uuIdentityName": "Mason Varela",
+      "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+      "memberList": [],
+      "status": "open",
+      "sys": { "cts": "2018-07-21T14:22:10.598Z", "mts": "2019-10-10T17:11:44.902Z", "rev": 1 },
+      "id": "4d91ae20c87b4c9fabcc99f0"
+    },
+    {
+      "name": "Just something grocery",
+      "visibility": true,
+      "uuIdentity": "9441-8820-4",
+      "uuIdentityName": "Elena Brooks",
+      "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+      "memberList": [],
+      "status": "open",
+      "sys": { "cts": "2021-03-03T08:44:29.201Z", "mts": "2021-11-19T19:33:51.198Z", "rev": 1 },
+      "id": "fa10de89223345d09701bc31"
+    },
+    {
+      "name": "Jou grocery",
+      "visibility": true,
+      "uuIdentity": "6677-9921-5",
+      "uuIdentityName": "Oliver Trent",
+      "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+      "memberList": [],
+      "status": "open",
+      "sys": { "cts": "2022-01-27T10:15:46.991Z", "mts": "2022-12-05T20:09:33.485Z", "rev": 1 },
+      "id": "3e0b77ff491c4d0b8f4c4420"
+    },
+    {
+      "name": "Saint grocery",
+      "visibility": true,
+      "uuIdentity": "2145-7632-6",
+      "uuIdentityName": "Nora Valencia",
+      "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+      "memberList": [],
+      "status": "open",
+      "sys": { "cts": "2017-11-12T11:50:09.777Z", "mts": "2018-06-22T13:44:21.331Z", "rev": 1 },
+      "id": "98ee7c7cbfc0403db2bd224f"
+    },
+    {
+      "name": "Maybe I buy grocery",
+      "visibility": true,
+      "uuIdentity": "8021-5542-7",
+      "uuIdentityName": "Declan Shaw",
+      "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+      "memberList": [],
+      "status": "open",
+      "sys": { "cts": "2020-06-14T07:33:22.441Z", "mts": "2021-08-01T18:41:58.540Z", "rev": 1 },
+      "id": "71d2a4cb64e04c198f18fb82"
+    },
+    {
+      "name": "Example grocery",
+      "visibility": true,
+      "uuIdentity": "9331-1108-8",
+      "uuIdentityName": "Ivy Salazar",
+      "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+      "memberList": [],
+      "status": "open",
+      "sys": { "cts": "2019-04-30T16:28:00.367Z", "mts": "2020-02-17T10:02:49.175Z", "rev": 1 },
+      "id": "cf3ea2913e70438e87eba6ce"
+    },
+    {
+      "name": "Something grocery",
+      "visibility": true,
+      "uuIdentity": "1022-8891-9",
+      "uuIdentityName": "Harper Quinn",
+      "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+      "memberList": [],
+      "status": "open",
+      "sys": { "cts": "2023-02-11T13:19:00.144Z", "mts": "2023-09-28T23:55:42.900Z", "rev": 1 },
+      "id": "bba77de4f75c4f329fb5bf11"
+    },
+    {
+      "name": "Big Grocery",
+      "visibility": true,
+      "uuIdentity": "7811-3340-2",
+      "uuIdentityName": "Rowan Blake",
+      "awid": "4ef6a7b01b5942ecbfb925b249af987f",
+      "memberList": [],
+      "status": "open",
+      "sys": { "cts": "2016-08-09T05:30:42.887Z", "mts": "2017-03-21T09:10:12.412Z", "rev": 1 },
+      "id": "e5f49adf0131497ea36e10bb"
+    }
+  ],
+  "pageInfo": { "pageIndex": 0, "pageSize": 20, "total": 0 },
+  "uuAppErrorMap": {}
+}

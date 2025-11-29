@@ -39,9 +39,60 @@
     "beingInitializedHeader": "uuAppWorkspace is being initialized",
     "beingInitializedAuthorizedInfo": "You are authorized to initialize #mtpo. To change initialization, click \"Retry\" or \"Rollback\". To get more info, click \"Get Info\"."
   },
-  "Menu": {
+  "UuShoplist.Core.RouteBar": {
+    "title": "Lesson 13 - Multilingualism - {0}",
     "home": "Welcome",
-    "about": "About Application",
-    "items": "Items"
+    "shoplists": "Shopping lists",
+    "shoplistDetails": "Details"
+  },
+  "UuShoplist.Shoplist.DetailModal": {
+    "oneVotes": "{0} vote",
+    "fewVotes": "{0} votes",
+    "otherVotes": "{0} votes",
+    "averageRating": "Rating: {0} / 5",
+    "update": "Update",
+    "delete": "Delete"
+  },
+  "UuShoplist.Shoplist.ListView": {
+    "deleteDone": "The shoplist {0} has been deleted.",
+    "deleteFail": "Joke delete failed!",
+    "updateFail": "Joke update failed!",
+    "pageLoadFail": "Jokes loading failed!",
+    "noJokes": "No items available"
+  },
+  "UuShoplist.Item.ItemListView": {
+    "deleteDone": "The item {0} has been deleted.",
+    "deleteFail": "Joke delete failed!",
+    "updateFail": "Joke update failed!",
+    "pageLoadFail": "Jokes loading failed!",
+    "noJokes": "No items available",
+    "heading": "Item list"
+  },
+  "UuShoplist.Shoplist.Tile": {
+    "averageRating": "Average rating: {0} / 5",
+    "archiveBtn": "Archive",
+    "deleteBtn": "Delete",
+    "deleteTip": "Delete",
+    "updateTip": "Update"
+  },
+  "UuShoplist.Item.ItemTile": {
+    "averageRating": "Average rating: {0} / 5",
+    "deleteTip": "Delete",
+    "updateTip": "Update"
+  },
+  "UuShoplist.Shoplist.CreateForm": {
+    "name": "Name",
+    "member": "Member",
+    "image": "Image",
+    "text": "Text",
+    "cancel": "Cancel",
+    "submit": "Create joke",
+    "textOrImage": "Text or image must be provided."
+  },
+  "UuShoplist.Shoplist.UpdateModal": {
+    "name": "Name",
+    "cancel": "Cancel",
+    "submit": "Update",
+    "required": "The name must be provided!."
   }
 }

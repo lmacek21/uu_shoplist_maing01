@@ -33,25 +33,22 @@ const Css = {
 };
 //@@viewOff:css
 
-const ItemTile = createVisualComponent({
+const MemberTile = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "ItemTile",
+  uu5Tag: Config.TAG + "MemberTile",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    item: PropTypes.shape({
+    member: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      status: PropTypes.string.isRequired
     }).isRequired,
-    onUpdate: PropTypes.func,
     onDelete: PropTypes.func,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    onUpdate: () => {},
     onDelete: () => {},
   },
   //@@viewOff:defaultProps
@@ -59,12 +56,9 @@ const ItemTile = createVisualComponent({
   render(props) {
     //@@viewOn:private
     function handleDelete(event) {
-      props.onDelete(new Utils.Event(props.item, event));
+      props.onDelete(new Utils.Event(props.member, event));
     }
 
-    function handleUpdate(event) {
-      props.onUpdate(new Utils.Event(props.item, event));
-    }
     //@@viewOff:private
 
     //@@viewOn:render
@@ -73,10 +67,9 @@ const ItemTile = createVisualComponent({
     return (
       <Box { ...elementProps }>
           <Text category="interface" segment="highlight" type="medium" significance="common" colorScheme="building" className={Css.text()}>
-            {props.item.name}
+            {props.member.name}
           </Text>
           <div className={Css.buttons()}>
-          <Button icon="mdi-pencil" onClick={handleUpdate} significance="subdued" tooltip="Update" colorScheme="dark-green" />
           <Button icon="mdi-delete" onClick={handleDelete} significance="subdued" tooltip="Delete" colorScheme="negative" />
           </div>
       </Box>
@@ -86,6 +79,6 @@ const ItemTile = createVisualComponent({
 });
 
 //@@viewOn:exports
-export { ItemTile };
-export default ItemTile;
+export { MemberTile };
+export default MemberTile;
 //@@viewOff:exports
