@@ -58,8 +58,22 @@ Calls.call = async (...args) => {
     const response = await fetch(mockUrl);
     const temp = await response.json();
     temp.itemList = temp.itemList.filter(item => item.shoplistId === id);
-    console.log(temp)
     return temp
+  } else if(url === "item/create") {
+    const dtoIn = args.at(2)
+    const response = await fetch(mockUrl);
+    const temp = await response.json();
+    return {...temp, ...dtoIn}
+  }else if(url === "shoplist/update") {
+    const dtoIn = args.at(2)
+    const response = await fetch(mockUrl);
+    const temp = await response.json();
+    return {...temp, ...dtoIn}
+  } else if(url === "item/update") {
+    const dtoIn = args.at(2)
+    const response = await fetch(mockUrl);
+    const temp = await response.json();
+    return {...temp, ...dtoIn}
   } else {
     const response = await fetch(mockUrl);
     return await response.json();

@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import { createVisualComponent, PropTypes, useLsi } from "uu5g05";
 import { Modal } from "uu5g05-elements";
-import { Form, FormText, FormTextArea, FormSelect, FormFile, SubmitButton, CancelButton } from "uu5g05-forms";
+import { Form, FormText, SubmitButton, CancelButton } from "uu5g05-forms";
 import Config from "./config/config";
 import importLsi from "../../lsi/import-lsi";
 //@@viewOff:imports
@@ -25,16 +25,13 @@ export const UpdateModal = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     itemDataObject: PropTypes.object.isRequired,
-    userList: PropTypes.array.isRequired,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    userList: [],
-  },
+  defaultProps: {},
   //@@viewOff:defaultProps
 
   render(props) {
@@ -43,12 +40,6 @@ export const UpdateModal = createVisualComponent({
 
     async function handleSubmit(event) {
       const values = { ...event.data.value };
-
-      // if (props.jokeDataObject.data.image && !values.image) {
-      //   delete values.image;
-      //   values.deleteImage = true;
-      // }
-
       return props.onSubmit(props.itemDataObject, values);
     }
 
@@ -57,13 +48,14 @@ export const UpdateModal = createVisualComponent({
 
       if (!name) {
         return {
-          message: lsi.textOrImage,
+          message: lsi.required,
         };
       }
     }
     //@@viewOff:private
 
     //@@viewOn:render
+    const item = props.itemDataObject.data;
 
     const formControls = (
       <div className={Css.controls()}>
@@ -79,7 +71,7 @@ export const UpdateModal = createVisualComponent({
             <FormText
               label={lsi.name}
               name="name"
-              initialValue={shoplist.name}
+              initialValue={item.name}
               maxLength={255}
               className={Css.input()}
               required

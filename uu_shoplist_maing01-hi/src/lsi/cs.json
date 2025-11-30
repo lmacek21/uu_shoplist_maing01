@@ -45,50 +45,72 @@
   },
   "UuShoplist.Core.RouteBar": {
     "home": "Vitajte",
-    "shoplists": "Nakupne zoznamy"
+    "shoplists": "Nákupní seznamy"
+  },
+  "UuShoplist.Routes.Shoplists": {
+    "archive": "Archív",
+    "back": "Zpět"
   },
   "UuShoplist.Shoplist.ListView": {
     "deleteDone": "Nákupní seznam {0} byl smazán.",
     "deleteFail": "Smazání nákupního seznamu selhalo!",
-    "updateFail": "Upravení vtipu selhalo!",
-    "pageLoadFail": "Načítání vtipů selhalo!",
-    "noJokes": "Žádné Položky"
+    "updateFail": "Upravení nákupního seznamu selhalo!",
+    "noShoplists": "Žádné nákupní seznamy"
+  },
+  "UuShoplist.Shoplist.ArchiveListView": {
+    "deleteDone": "Nákupní seznam {0} byl smazán.",
+    "deleteFail": "Smazání nákupního seznamu selhalo!",
+    "updateFail": "Upravení nákupního seznamu selhalo!",
+    "noShoplists": "Žádné nákupní seznamy"
   },
   "UuShoplist.Item.ItemListView": {
     "deleteDone": "Položka {0} byla smazána.",
-    "deleteFail": "Smazání vtipu selhalo!",
-    "updateFail": "Upravení vtipu selhalo!",
-    "pageLoadFail": "Načítání vtipů selhalo!",
-    "noJokes": "Žádné položky",
+    "deleteFail": "Smazání položky selhalo!",
+    "updateFail": "Upravení položky selhalo!",
+    "noItems": "Žádné položky",
     "heading": "Položky"
   },
   "UuShoplist.Shoplist.Tile": {
-    "averageRating": "Průměrné hodnocení: {0} / 5",
+    "archiveBtn": "Archivovat",
+    "deleteBtn": "Smazat",
+    "deleteTip": "Smazat",
+    "updateTip": "Upravit"
+  },
+  "UuShoplist.Shoplist.ArchiveTile": {
     "archiveBtn": "Archivovat",
     "deleteBtn": "Smazat",
     "deleteTip": "Smazat",
     "updateTip": "Upravit"
   },
   "UuShoplist.Item.ItemTile": {
-    "averageRating": "Průměrné hodnocení: {0} / 5",
     "deleteTip": "Smazat",
     "updateTip": "Upravit"
   },
   "UuShoplist.Shoplist.CreateView": {
-    "createJoke": "Přidat vtip",
-    "createFail": "Vytvoření vtipu selhalo!",
-    "createDone": "Vtip {0} byl vytvořen."
+    "createShoplist": "Přidat nákupní seznam",
+    "createFail": "Vytvoření nákupního seznamu selhalo!",
+    "createDone": "Nákupní seznam {0} byl vytvořen."
   },
   "UuShoplist.Shoplist.CreateForm": {
     "name": "Název",
     "member": "Člen",
-    "image": "Obrázek",
-    "text": "Text",
     "cancel": "Zrušit",
-    "submit": "Vytvořit vtip",
-    "textOrImage": "Text nebo obrázek musí být vyplněn."
+    "submit": "Vytvořit nákupní seznam",
+    "required": "Název je povinný"
+  },
+  "UuShoplist.Item.CreateForm": {
+    "name": "Název",
+    "cancel": "Zrušit",
+    "submit": "Vytvořit položku",
+    "textOrImage": "Název je povinný"
   },
   "UuShoplist.Shoplist.UpdateModal": {
+    "name": "Název",
+    "cancel": "Zrušit",
+    "submit": "Upravit",
+    "required": "Název musí být vyplněn."
+  },
+  "UuShoplist.Item.UpdateModal": {
     "name": "Název",
     "cancel": "Zrušit",
     "submit": "Upravit",

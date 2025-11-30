@@ -30,16 +30,6 @@ const Css = {
       // padding: 16,
       // height: 48,
     }),
-
-  footer: () =>
-    Config.Css.css({
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      height: 48,
-      paddingLeft: 24,
-      paddingRight: 24,
-    }),
   
   slot: () =>
     Config.Css.css({
@@ -58,9 +48,9 @@ function hasManagePermission(shoplist, identity, profileList) {
 }
 //@@viewOff:helpers
 
-const Tile = createVisualComponent({
+const ArchiveTile = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "Tile",
+  uu5Tag: Config.TAG + "ArchiveTile",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -81,22 +71,12 @@ const Tile = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const lsi = useLsi(importLsi, [Tile.uu5Tag]);
+    const lsi = useLsi(importLsi, [ArchiveTile.uu5Tag]);
     const shoplistDataObject = props.data;
 
     function handleDelete(event) {
       event.stopPropagation();
       props.onDelete(shoplistDataObject);
-    }
-
-    function handleUpdate(event) {
-      event.stopPropagation();
-      props.onUpdate(shoplistDataObject);
-    }
-
-    function handleArchive(event) {
-      event.stopPropagation();
-      props.onArchive(shoplistDataObject);
     }
 
     function handleDetail() {
@@ -109,7 +89,6 @@ const Tile = createVisualComponent({
     const shoplist = shoplistDataObject.data;
     const canManage = hasManagePermission(shoplist, props.identity, props.profileList);
     const isActionDisabled = shoplistDataObject.state === "pending";
-    const isArchived = shoplistDataObject.data.status === "archived";
 
     return (
       <Box {...elementProps} onClick={handleDetail}>
@@ -117,28 +96,7 @@ const Tile = createVisualComponent({
         <Text category="interface" segment="title" type="minor" colorScheme="building" className={Css.title()}>
           {shoplist.name}
         </Text>
-        {canManage && (<Button
-          icon="mdi-pencil"
-          onClick={handleUpdate}
-          significance="subdued"
-          tooltip={lsi.updateTip}
-          disabled={isActionDisabled}
-          colorScheme="cyan"
-        />)}
-        </div>
-        <Box significance="distinct" className={Css.footer()}>
-          {canManage && !isArchived && (
-            <div>
-              <Button
-                icon="mdi-archive"
-                onClick={handleArchive}
-                significance="distinct"
-                tooltip={lsi.updateTip}
-                disabled={isActionDisabled}
-                colorScheme="alternative-active"
-              >{lsi.archiveBtn}</Button> 
-            </div>)}
-          {canManage && (
+        {canManage && (
             <div className={Css.slot()}>
               <Button
                 icon="mdi-delete"
@@ -150,7 +108,7 @@ const Tile = createVisualComponent({
               >{lsi.deleteBtn}</Button> 
             </div>
           )}
-        </Box>
+        </div>
       </Box>
     );
     //@@viewOff:render
@@ -158,6 +116,6 @@ const Tile = createVisualComponent({
 });
 
 //@@viewOn:exports
-export { Tile };
-export default Tile;
+export { ArchiveTile };
+export default ArchiveTile;
 //@@viewOff:exports

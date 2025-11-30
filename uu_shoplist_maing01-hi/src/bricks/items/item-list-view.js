@@ -4,8 +4,22 @@ import { useAlertBus, Text } from "uu5g05-elements";
 import { Grid } from "uu5tilesg02-elements";
 import ItemTile from "./item-tile";
 import Config from "./config/config.js";
+import UpdateModal from "./update-modal";
 import importLsi from "../../lsi/import-lsi.js";
 //@@viewOff:imports
+
+//@@viewOn:helpers
+function getItemDataObject(itemDataList, id) {
+  // HINT: We need to also check newData where are newly created items
+  // that don't meet filtering, sorting or paging criteria.
+  const item =
+    itemDataList.newData?.find((item) => item?.data.id === id) ||
+    itemDataList.data.find((item) => item?.data.id === id);
+
+  return item;
+}
+
+//@@viewOff:helpers
 
 const ItemListView = createVisualComponent({
   //@@viewOn:statics
@@ -16,6 +30,7 @@ const ItemListView = createVisualComponent({
   propTypes: {
     itemDataList: PropTypes.object.isRequired,
     identity: PropTypes.object.isRequired,
+    ownerId: PropTypes.object,
     userList: PropTypes.array,
     profileList: PropTypes.array,
   },
@@ -34,11 +49,10 @@ const ItemListView = createVisualComponent({
     const lsi = useLsi(importLsi, [ItemListView.uu5Tag]);
     const [updateData, setUpdateData] = useState({ open: false, id: undefined });
 
-    const activeDataObjectId = updateData.id;
     let activeDataObject;
 
-    if (activeDataObjectId) {
-      activeDataObject = getItemDataObject(props.itemDataList, activeDataObjectId);
+    if (updateData.id) {
+      activeDataObject = getItemDataObject(props.itemDataList, updateData.id);
     }
 
     function showError(error, header = "") {
@@ -65,13 +79,25 @@ const ItemListView = createVisualComponent({
       });
     }
 
+    async function handleResolve(itemDataObject) {
+      try {
+        itemDataObject.data.status = "resolved"
+        await itemDataObject.handlerMap.update(itemDataObject.data);
+      } catch (error) {
+        ItemListView.logger.error("Error resolving item", error);
+        showError(error, lsi.deleteFail);
+        return;
+      }
+    }
+
     async function handleUpdate(itemDataObject) {
       setUpdateData({ open: true, id: itemDataObject.data.id });
     }
 
     async function handleUpdateSubmit(itemDataObject, values) {
       try {
-        await itemDataObject.handlerMap.update(values);
+        itemDataObject.data.name = values.name
+        await itemDataObject.handlerMap.update(itemDataObject.data);
       } catch (error) {
         ItemListView.logger.error("Error updating item", error);
         showError(error, lsi.updateFail, error);
@@ -94,15 +120,14 @@ const ItemListView = createVisualComponent({
       profileList: props.profileList,
       identity: props.identity,
       userList: props.userList,
+      ownerId: props.ownerId,
       onDelete: handleDelete,
       onUpdate: handleUpdate,
+      onResolve: handleResolve,
     };
 
     return (
       <div {...attrs}>
-        <Text category="interface" segment="title" type="major" significance="common" colorScheme="building" style={{ display:"block", width:"100%", textAlign: "center", margin: "12px" }}>
-           {lsi.heading}
-        </Text>
         <Grid
           data={props.itemDataList.data}
           verticalGap={2}
@@ -111,9 +136,9 @@ const ItemListView = createVisualComponent({
         >
           <ItemTile {...tileProps} />
         </Grid>
-        {updateData.open && (
+        {updateData.open && activeDataObject && (
           <UpdateModal
-            shoplistDataObject={activeDataObject}
+            itemDataObject={activeDataObject}
             userList={props.userList}
             onSubmit={handleUpdateSubmit}
             onCancel={handleUpdateCancel}

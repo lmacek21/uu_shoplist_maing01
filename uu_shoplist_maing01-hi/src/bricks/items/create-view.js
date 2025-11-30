@@ -5,6 +5,12 @@ import CreateForm from "./create-form.js";
 import Config from "./config/config.js";
 //@@viewOff:imports
 
+//@@viewOn:css
+const Css = {
+  button: () => Config.Css.css({ display: "block", margin: "0px 24px", marginLeft: "auto" }),
+};
+//@@viewOff:css
+
 //@@viewOn:constants
 const Mode = {
   BUTTON: "BUTTON",
@@ -15,7 +21,7 @@ const Mode = {
 //@@viewOn:helpers
 function CreateButton(props) {
   return (
-    <Button {...props} colorScheme="primary" significance="highlighted">
+    <Button {...props} colorScheme="primary" significance="highlighted" className={Css.button()}>
       Create item
     </Button>
   );
@@ -30,6 +36,7 @@ const CreateView = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     onCreate: PropTypes.func,
+    identity: PropTypes.object.isRequired,
   },
   //@@viewOff:propTypes
 
@@ -44,14 +51,21 @@ const CreateView = createVisualComponent({
     const { addAlert } = useAlertBus();
     const [mode, setMode] = useState(Mode.BUTTON);
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
       let item;
 
       try {
-        item = props.onCreate(event.data.value);
+        let dtoIn = event.data.value
+        dtoIn.id = Utils.String.generateId()
+        item = await props.itemDataList.handlerMap.create(dtoIn)
       } catch (error) {
-        // We pass Error.Message instance to the Uu5Forms.Form that shows alert
-        throw new Utils.Error.Message("Item create failed!", error);
+        CreateView.logger.error("Error while creating item", error);
+        addAlert({
+          header: "Item creation failed!",
+          message: error.message,
+          priority: "error",
+        });
+        return;
       }
 
       addAlert({

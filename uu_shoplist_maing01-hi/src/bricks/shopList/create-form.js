@@ -65,7 +65,7 @@ const CreateForm = createVisualComponent({
 
         <FormSelect
           label={lsi.member}
-          name="userIdList"
+          name="memberList"
           itemList={getUserItemList(props.userList)}
           className={Css.input()}
           multiple

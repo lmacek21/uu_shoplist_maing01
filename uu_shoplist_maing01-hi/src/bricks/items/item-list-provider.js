@@ -30,7 +30,6 @@ const ItemListProvider = createComponent({
         update: handleUpdate,
         delete: handleDelete,
       },
-      pageSize: 50,
     });
 
     function handleLoad(dtoIn) {
@@ -38,8 +37,9 @@ const ItemListProvider = createComponent({
       return Calls.Item.list(dtoIn);
     }
 
-    function handleCreate(values) {
-      return Calls.Item.create(values);
+    function handleCreate(dtoIn) {
+      dtoIn.shoplistId = props.id
+      return Calls.Item.create(dtoIn);
     }
 
     function handleUpdate(values) {

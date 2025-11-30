@@ -25,6 +25,11 @@ function getShoplistDataObject(shoplistDataList, id) {
 
   return item;
 }
+
+function getOpenShoplistDatalist(shoplistDataList) {
+    const openList = shoplistDataList.filter(item => item.data.status === "open")
+    return openList;
+}
 //@@viewOff:helpers
 
 const ListView = createVisualComponent({
@@ -54,6 +59,8 @@ const ListView = createVisualComponent({
     const lsi = useLsi(importLsi, [ListView.uu5Tag]);
     const [, setRoute] = useRoute();
     const [updateData, setUpdateData] = useState({ open: false, id: undefined });
+    const openList = getOpenShoplistDatalist(props.shoplistDataList.data)
+
     let activeDataObject;
 
     if (updateData.id) {
@@ -85,13 +92,13 @@ const ListView = createVisualComponent({
     }
 
     async function handleUpdate(shoplistDataObject) {
-      console.log(shoplistDataObject)
       setUpdateData({ open: true, id: shoplistDataObject.data.id });
     }
 
     async function handleUpdateSubmit(shoplistDataObject, values) {
       try {
-        await shoplistDataObject.handlerMap.update(values);
+        shoplistDataObject.data.name = values.name
+        await shoplistDataObject.handlerMap.update(shoplistDataObject.data);
       } catch (error) {
         ListView.logger.error("Error updating shoplist", error);
         showError(error, lsi.updateFail, error);
@@ -101,13 +108,25 @@ const ListView = createVisualComponent({
       setUpdateData({ open: false });
     }
 
+    async function handleArchive(shoplistDataObject) {
+      try {
+        shoplistDataObject.data.status = "archived"
+        await shoplistDataObject.handlerMap.update(shoplistDataObject.data);
+      } catch (error) {
+        ListView.logger.error("Error updating shoplist", error);
+        showError(error, lsi.updateFail, error);
+        return;
+      }
+    }
+
     function handleUpdateCancel() {
       setUpdateData({ open: false });
     }
 
     function handleDetailOpen(shoplistDataObject) {
-      setRoute("shoplistDetails", {id: shoplistDataObject.data.id})
+      setRoute("shoplistDetails", {id: shoplistDataObject.data.id, ownerId: shoplistDataObject.data.uuIdentity})
     }
+    
     //@@viewOff:private
 
     //@@viewOn:render
@@ -120,12 +139,13 @@ const ListView = createVisualComponent({
       onDetail: handleDetailOpen,
       onDelete: handleDelete,
       onUpdate: handleUpdate,
+      onArchive: handleArchive,
     };
 
     return (
       <div {...attrs}>
         <Grid
-          data={props.shoplistDataList.data}
+          data={openList}
           verticalGap={8}
           tileHeight={300}
           emptyState={lsi.noJokes}

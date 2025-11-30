@@ -1,18 +1,24 @@
 //@@viewOn:imports
-import { createVisualComponent, useSession } from "uu5g05";
+import { createVisualComponent, useSession, useState, useLsi } from "uu5g05";
 import { useSubAppData, useSystemData } from "uu_plus4u5g02";
 import { RouteController } from "uu_plus4u5g02-app";
 import Config from "./config/config.js";
 import RouteBar from "../core/route-bar";
 import ListProvider from "../bricks/shoplist/shoplist-list-provider.js";
 import ListView from "../bricks/shoplist/shoplist-list-view.js";
+import ArchiveListView from "../bricks/shoplist/shoplist-archive-view.js";
 import CreateView from "../bricks/shoplist/create-view";
+import { Button } from "uu5g05-elements";
+import importLsi from "../lsi/import-lsi.js";
 //@@viewOff:imports
 
 //@@viewOn:css
 const Css = {
-  container: () => Config.Css.css({ maxWidth: 640, margin: "0px auto" }),
-  createView: () => Config.Css.css({ margin: "24px 0px" }),
+  container: () => Config.Css.css({ maxWidth: 640, margin: "0px auto 20px" }),
+  btnmenu: () => Config.Css.css({ maxWidth: 640, margin: "0px auto", display: "flex" }),
+  createView: () => Config.Css.css({ margin: "24px", marginRight: "auto", flexGrow: 1}),
+  button: () => Config.Css.css({ margin: "auto 24px", alignItems: "center"}),
+  bcbutton: () => Config.Css.css({ margin: "24px", alignItems: "center"}),
 };
 //@@viewOff:css
 
@@ -29,7 +35,13 @@ let Shoplists = createVisualComponent({
 
     const profileList = systemDataObject.data.profileData.uuIdentityProfileList;
     const canCreate = profileList.includes("Authorities") || profileList.includes("Executives");
-    const archive = false;
+    const [view, setView] = useState({ archive: false  });
+
+    const lsi = useLsi(importLsi, [Shoplists.uu5Tag]);
+
+    function handleView() {
+      view.archive ? setView({archive: false}) : setView({archive: true})
+    }
     //@@viewOff:private
     //@@viewOn:render
     return (
@@ -39,7 +51,8 @@ let Shoplists = createVisualComponent({
           {(shoplistDataList) => (
             <RouteController routeDataObject={shoplistDataList}>
               <div className={Css.container()}>
-                {canCreate && (
+                <div className={Css.btnmenu()}>
+                {canCreate && !view.archive && (
                   <CreateView
                     shoplistDataList={shoplistDataList}
                     userList={subAppDataObject.data.userList}
@@ -47,12 +60,37 @@ let Shoplists = createVisualComponent({
                     identity={identity}
                   />
                 )}
+                {!view.archive && (<Button
+                className={Css.button()}
+                icon="mdi-archive-check-outline"
+                onClick={handleView}
+                significance="highlighted"
+                tooltip= "Archive"
+                colorScheme="steel"
+                >{lsi.archive}</Button>)}
+                {view.archive && (<Button
+                className={Css.bcbutton()}
+                icon="mdi-arrow-left"
+                onClick={handleView}
+                significance="highlighted"
+                tooltip= "Archive"
+                colorScheme="steel"
+                >{lsi.back}</Button>)}
+                </div>
+                {!view.archive && (
                 <ListView 
                     shoplistDataList={shoplistDataList} 
                     userList={subAppDataObject.data.userList}
                     profileList={profileList}
                     identity={identity}
-                />
+                />)}
+                {view.archive && (
+                <ArchiveListView 
+                    shoplistDataList={shoplistDataList} 
+                    userList={subAppDataObject.data.userList}
+                    profileList={profileList}
+                    identity={identity}
+                />)}
               </div>
             </RouteController>
           )}

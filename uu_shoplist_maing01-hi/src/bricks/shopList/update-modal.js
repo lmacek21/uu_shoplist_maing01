@@ -40,8 +40,6 @@ export const UpdateModal = createVisualComponent({
 
     async function handleSubmit(event) {
       const values = { ...event.data.value };
-      console.log(event.data)
-      console.log(props.shoplistDataObject)
       return props.onSubmit(props.shoplistDataObject, values);
     }
 
@@ -57,7 +55,6 @@ export const UpdateModal = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    console.log(props)
     const shoplist = props.shoplistDataObject.data;
 
     const formControls = (

@@ -2,6 +2,7 @@
 import { createVisualComponent, useSession } from "uu5g05";
 import { useSubAppData, useSystemData } from "uu_plus4u5g02";
 import { withRoute } from "uu_plus4u5g02-app";
+import { Text } from "uu5g05-elements";
 
 import Config from "./config/config.js";
 import RouteBar from "../core/route-bar";
@@ -9,16 +10,17 @@ import { RouteController } from "uu_plus4u5g02-app";
 import ItemListProvider from "../bricks/items/item-list-provider.js";
 import ItemListView from "../bricks/items/item-list-view.js";
 import ItemCreateView from "../bricks/items/create-view.js";
-import MemberListProvider from "../bricks/member/member-list-provider.js";
-import MemberListView from "../bricks/member/member-list-view.js";
-import MemberCreateView from "../bricks/member/create-view.js";
 
 //@@viewOff:imports
 
 //@@viewOn:css
 const Css = {
-  container: () => Config.Css.css({ maxWidth: 640, margin: "0px auto" }),
-  createView: () => Config.Css.css({ margin: "24px 0px" }),
+  layout: () => Config.Css.css({ maxWidth: 1280, margin: "0px auto 20px", display: "flex" }),
+  container: () => Config.Css.css({ maxWidth: 640, margin: "0px 30px 20px", flex: 1 }),
+  heading: () => Config.Css.css({ margin: "20px", marginRight: "150px", alignItems: "center"}),
+  createView: () => Config.Css.css({ margin: "24px", marginLeft: "auto", flexGrow: 1}),
+  btnmenu: () => Config.Css.css({ maxWidth: 640, margin: "0px auto", display: "flex", alignItems: "center" }),
+  memberText: () => Config.Css.css({ maxWidth: 640, margin: "0px auto", display: "flex", alignItems: "center", justifyContent: "center" }),
 };
 //@@viewOff:css
 
@@ -30,6 +32,7 @@ let ShoplistDetails = createVisualComponent({
  render(props) {
     //@@viewOn:private
     const id = props.params.id
+    const ownerId = props.params.ownerId
 
     const subAppDataObject = useSubAppData();
     const systemDataObject = useSystemData();
@@ -43,69 +46,37 @@ let ShoplistDetails = createVisualComponent({
     return (
       <>
         <RouteBar />
-        <ItemListProvider id={id}>
+        <div className={Css.layout()}>
+        <ItemListProvider id={id} ownerId={ownerId}>
           {(itemDataList) => (
             <RouteController routeDataObject={itemDataList}>
               <div className={Css.container()}>
-                {/* {canCreate && (
+                <div className={Css.btnmenu()}>
+                <Text category="interface" segment="title" type="major" significance="common" colorScheme="building" className={Css.heading()}>
+                           Item List
+                        </Text>
+                {canCreate && (
                   <ItemCreateView
                     itemDataList={itemDataList}
-                    userList={subAppDataObject.data.userList}
-                    className={Css.createView()}
-                    identity={identity}
-                  />
-                )} */}
-                <ItemListView 
-                    itemDataList={itemDataList} 
-                    userList={subAppDataObject.data.userList}
-                    profileList={profileList}
-                    identity={identity}
-                />
-              </div>
-            </RouteController>
-          )}
-        </ItemListProvider>
-        {/* <MemberListProvider>
-          {(itemDataList) => (
-            <RouteController routeDataObject={[itemDataList]}>
-              <div className={Css.container()}>
-                {canCreate && (
-                  <MemberCreateView
-                    shoplistDataList={shoplistDataList}
-                    userList={subAppDataObject.data.userList}
                     className={Css.createView()}
                     identity={identity}
                   />
                 )}
-                <MemberListView 
-                    shoplistDataList={shoplistDataList} 
-                    userList={subAppDataObject.data.userList}
+                </div>
+                <ItemListView 
+                    itemDataList={itemDataList} 
                     profileList={profileList}
                     identity={identity}
+                    ownerId={ownerId}
                 />
               </div>
             </RouteController>
           )}
-        </MemberListProvider> */}
-        {/* <div style={{ display: "flex" }}>
-         <ItemListProvider>
-          {({ itemList, remove, update, create }) => (
-            <div style={{ flex: 1, flexDirection: "column" }}>
-              <ItemListView itemList={itemList} onDelete={remove} onUpdate={update} />
-              <ItemCreateView onCreate={create} style={{ maxWidth: 400, margin: "20px auto", display: "block" }} />
-              <ListTitle itemList={itemList} />
-            </div>
-          )}
         </ItemListProvider>
-        <MemberListProvider>
-          {({ memberList, remove, create }) => (
-            <div style={{ flex: 1, flexDirection: "column" }}>
-              <MemberListView memberList={memberList} onDelete={remove}/>
-              <MemberCreateView onCreate={create} style={{ maxWidth: 400, margin: "20px auto", display: "block" }} />
-            </div>
-          )}
-        </MemberListProvider>
-        </div> */}
+        <Text category="interface" segment="title" type="major" significance="common" colorScheme="building" className={Css.memberText()}>
+          Here Will Be Member List
+        </Text>
+         </div>
       </>
     );
     //@@viewOff:render

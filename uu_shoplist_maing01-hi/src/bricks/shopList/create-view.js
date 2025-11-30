@@ -7,7 +7,7 @@ import Config from "./config/config.js";
 
 //@@viewOn:css
 const Css = {
-  button: () => Config.Css.css({ display: "block", margin: "0px auto" }),
+  button: () => Config.Css.css({ display: "block", margin: "0px", marginRight: "auto" }),
 };
 //@@viewOff:css
 
@@ -56,12 +56,12 @@ const CreateView = createVisualComponent({
       let shoplist;
 
       try {
-        let dtoIn = event.data.value
-        // TODO: temporary solution - need to figure it out: better mocking of /create 
+        let dtoIn = event.data.value 
         dtoIn.id = Utils.String.generateId()
         dtoIn.uuIdentity = props.identity.uuIdentity
         dtoIn.uuIdentityName = props.identity.name
         shoplist = await props.shoplistDataList.handlerMap.create(dtoIn)
+        console.log(shoplist)
       } catch (error) {
         CreateView.logger.error("Error while creating shoplist", error);
         addAlert({
@@ -79,7 +79,6 @@ const CreateView = createVisualComponent({
       });
 
       setMode(Mode.BUTTON);
-      // props.shoplistDataList.handlerMap.load();
     }
     //@@viewOff:private
 
