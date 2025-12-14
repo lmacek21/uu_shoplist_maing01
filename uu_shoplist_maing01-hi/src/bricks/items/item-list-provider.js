@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { createComponent, useDataList, useEffect, useRef, PropTypes } from "uu5g05";
+import { createComponent, useDataList, PropTypes } from "uu5g05";
 import Config from "./config/config";
 import Calls from "calls";
 //@@viewOff:imports

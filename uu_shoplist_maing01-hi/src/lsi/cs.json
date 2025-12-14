@@ -51,24 +51,30 @@
     "archive": "Archív",
     "back": "Zpět"
   },
+  "UuShoplist.Routes.ShoplistDetails": {
+    "members": "Členové",
+    "items": "Položky"
+  },
   "UuShoplist.Shoplist.ListView": {
     "deleteDone": "Nákupní seznam {0} byl smazán.",
     "deleteFail": "Smazání nákupního seznamu selhalo!",
-    "updateFail": "Upravení nákupního seznamu selhalo!",
-    "noShoplists": "Žádné nákupní seznamy"
+    "updateFail": "Upravení nákupního seznamu selhalo!"
   },
   "UuShoplist.Shoplist.ArchiveListView": {
     "deleteDone": "Nákupní seznam {0} byl smazán.",
-    "deleteFail": "Smazání nákupního seznamu selhalo!",
-    "updateFail": "Upravení nákupního seznamu selhalo!",
-    "noShoplists": "Žádné nákupní seznamy"
+    "deleteFail": "Smazání nákupního seznamu selhalo!"
   },
   "UuShoplist.Item.ItemListView": {
     "deleteDone": "Položka {0} byla smazána.",
     "deleteFail": "Smazání položky selhalo!",
     "updateFail": "Upravení položky selhalo!",
-    "noItems": "Žádné položky",
     "heading": "Položky"
+  },
+  "UuShoplist.Shoplist.ShoplistMemberView": {
+    "deleteDone": "Položka {0} byla smazána.",
+    "deleteFail": "Smazání položky selhalo!",
+    "updateFail": "Upravení položky selhalo!",
+    "heading": "Členové"
   },
   "UuShoplist.Shoplist.Tile": {
     "archiveBtn": "Archivovat",
@@ -84,12 +90,23 @@
   },
   "UuShoplist.Item.ItemTile": {
     "deleteTip": "Smazat",
-    "updateTip": "Upravit"
+    "updateTip": "Upravit",
+    "delete": "Smazat",
+    "resolve": "Potvrdit"
+  },
+   "UuShoplist.Shoplist.ShoplistMemberTile": {
+    "deleteTip": "Smazat",
+    "updateTip": "Upravit",
+    "delete": "Smazat"
   },
   "UuShoplist.Shoplist.CreateView": {
-    "createShoplist": "Přidat nákupní seznam",
-    "createFail": "Vytvoření nákupního seznamu selhalo!",
-    "createDone": "Nákupní seznam {0} byl vytvořen."
+    "button": "Vytvořit nákupní seznam"
+  },
+  "UuShoplist.Item.CreateView": {
+    "button": "Vytvorit položku"
+  },
+  "UuShoplist.Shoplist.AddMemberView": {
+    "button": "Pridať člena"
   },
   "UuShoplist.Shoplist.CreateForm": {
     "name": "Název",
@@ -97,6 +114,12 @@
     "cancel": "Zrušit",
     "submit": "Vytvořit nákupní seznam",
     "required": "Název je povinný"
+  },
+  "UuShoplist.Shoplist.AddMemberForm": {
+    "member": "Člen",
+    "cancel": "Zrušit",
+    "submit": "Pridat Člena",
+    "required": "Člen je povinný"
   },
   "UuShoplist.Item.CreateForm": {
     "name": "Název",

@@ -84,6 +84,11 @@ const Calls = {
       return Calls.call("get", commandUri, dtoIn);
     },
 
+    get(dtoIn) {
+      const commandUri = Calls.getCommandUri("shoplist/get");
+      return Calls.call("get", commandUri, dtoIn);
+    },
+
     create(dtoIn) {
       const commandUri = Calls.getCommandUri("shoplist/create");
       return Calls.call("post", commandUri, dtoIn);

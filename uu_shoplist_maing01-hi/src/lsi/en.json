@@ -47,6 +47,10 @@
     "archive": "Archive",
     "back": "Go Back"
   },
+  "UuShoplist.Routes.ShoplistDetails": {
+    "members": "Member list",
+    "items": "Item list"
+  },
   "UuShoplist.Shoplist.DetailModal": {
     "update": "Update",
     "delete": "Delete"
@@ -54,21 +58,33 @@
   "UuShoplist.Shoplist.ListView": {
     "deleteDone": "The shoplist {0} has been deleted.",
     "deleteFail": "Shoplist delete failed!",
-    "updateFail": "Shoplist update failed!",
-    "noShoplists": "No shoplists available"
+    "updateFail": "Shoplist update failed!"
+  },
+  "UuShoplist.Shoplist.CreateView": {
+    "button": "Create Shoplist"
+  },
+  "UuShoplist.Item.CreateView": {
+    "button": "Create item"
+  },
+  "UuShoplist.Shoplist.AddMemberView": {
+    "button": "Add member"
   },
   "UuShoplist.Shoplist.ArchiveListView": {
     "deleteDone": "The shoplist {0} has been deleted.",
     "deleteFail": "Shoplist delete failed!",
-    "updateFail": "Shoplist update failed!",
-    "noShoplists": "No shoplists available"
+    "noShoplists": "No archived shoplists"
   },
   "UuShoplist.Item.ItemListView": {
     "deleteDone": "The item {0} has been deleted.",
     "deleteFail": "Item delete failed!",
     "updateFail": "Item update failed!",
-    "noItems": "No items available",
     "heading": "Item list"
+  },
+  "UuShoplist.Shoplist.ShoplistMemberView": {
+    "deleteDone": "The member {0} has been deleted.",
+    "deleteFail": "Member delete failed!",
+    "updateFail": "Member update failed!",
+    "heading": "Member list"
   },
   "UuShoplist.Shoplist.Tile": {
     "archiveBtn": "Archive",
@@ -84,7 +100,14 @@
   },
   "UuShoplist.Item.ItemTile": {
     "deleteTip": "Delete",
-    "updateTip": "Update"
+    "updateTip": "Update",
+    "delete": "Delete",
+    "resolve": "Resolve"
+  },
+  "UuShoplist.Shoplist.ShoplistMemberTile": {
+    "deleteTip": "Delete",
+    "updateTip": "Update",
+    "delete": "Delete"
   },
   "UuShoplist.Shoplist.CreateForm": {
     "name": "Name",
@@ -92,6 +115,12 @@
     "cancel": "Cancel",
     "submit": "Create Shoplist",
     "required": "The name must be provided!"
+  },
+  "UuShoplist.Shoplist.AddMemberForm": {
+    "member": "Member",
+    "cancel": "Cancel",
+    "submit": "Add Member",
+    "required": "The member must be provided!"
   },
   "UuShoplist.Item.CreateForm": {
     "name": "Name",

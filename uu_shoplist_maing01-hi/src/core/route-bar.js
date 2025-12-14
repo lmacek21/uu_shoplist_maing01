@@ -33,7 +33,6 @@ const RouteBar = createVisualComponent({
     const [, setRoute] = useRoute();
     const subAppDataObject = useSubAppData();
     const lsi = useLsi(importLsi, [RouteBar.uu5Tag]);
-    console.log(RouteBar.uu5Tag)
 
     const appActionList = [
       { children: lsi.home, onClick: () => setRoute("home") },

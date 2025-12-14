@@ -1,8 +1,9 @@
 //@@viewOn:imports
-import { createVisualComponent, PropTypes, Utils, useState } from "uu5g05";
+import { createVisualComponent, PropTypes, Utils, useState, useLsi } from "uu5g05";
 import { Button, useAlertBus } from "uu5g05-elements";
 import CreateForm from "./create-form.js";
 import Config from "./config/config.js";
+import importLsi from "../../lsi/import-lsi.js";
 //@@viewOff:imports
 
 //@@viewOn:css
@@ -22,7 +23,7 @@ const Mode = {
 function CreateButton(props) {
   return (
     <Button {...props} colorScheme="primary" significance="highlighted" className={Css.button()}>
-      Create Shoplist
+      {props.name}
     </Button>
   );
 }
@@ -51,6 +52,7 @@ const CreateView = createVisualComponent({
     //@@viewOn:private
     const [mode, setMode] = useState(Mode.BUTTON);
     const { addAlert } = useAlertBus();
+    const lsi = useLsi(importLsi, [CreateView.uu5Tag]);
 
     async function handleSubmit(event) {
       let shoplist;
@@ -88,7 +90,7 @@ const CreateView = createVisualComponent({
 
     switch (mode) {
       case Mode.BUTTON:
-        content = <CreateButton onClick={() => setMode(Mode.FORM)} />;
+        content = <CreateButton onClick={() => setMode(Mode.FORM)} name={lsi.button} />;
         break;
       default:
         content = <CreateForm 

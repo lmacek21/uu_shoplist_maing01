@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { createVisualComponent, PropTypes, Utils, useLsi, useState, useRoute, useMemo } from "uu5g05";
+import { createVisualComponent, PropTypes, Utils, useLsi, useRoute } from "uu5g05";
 import { useAlertBus } from "uu5g05-elements";
 import { Grid } from "uu5tilesg02-elements";
 import ArchiveTile from "./shoplist-archive-tile";
@@ -96,7 +96,6 @@ const ArchiveListView = createVisualComponent({
           data={archivedList}
           verticalGap={8}
           tileHeight={300}
-          emptyState={lsi.noJokes}
         >
           <ArchiveTile {...tileProps} />
         </Grid>

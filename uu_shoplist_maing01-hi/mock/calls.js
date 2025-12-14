@@ -1,28 +1,3 @@
-// import Calls from "../src/calls.js";
-
-// let appAssetsBaseUri =
-//   document.baseURI ||
-//   (document.querySelector("base") || {}).href ||
-//   location.protocol + "//" + location.host + location.pathname;
-// if (!appAssetsBaseUri.endsWith("/")) {
-//   appAssetsBaseUri = appAssetsBaseUri.slice(0, appAssetsBaseUri.lastIndexOf("/")); // strip what's after last slash
-// }
-
-// Calls.call = (method, url, dtoIn) => {
-//   let mockUrl = (process.env.MOCK_DATA_BASE_URI || appAssetsBaseUri) + "mock/data/" + url + ".json";
-//   let responsePromise = (async () => {
-//     let response = await fetch(mockUrl);
-//     return await response.json();
-//   })();
-//   return dtoIn != null ? responsePromise.then(dtoIn.done, dtoIn.fail) : responsePromise;
-// };
-
-// Calls.getCommandUri = (useCase) => {
-//   return useCase;
-// };
-
-// export default Calls;
-
 import { Client } from "uu_appg01";
 import Calls from "../src/calls.js";
 
@@ -69,6 +44,17 @@ Calls.call = async (...args) => {
     const response = await fetch(mockUrl);
     const temp = await response.json();
     return {...temp, ...dtoIn}
+  } else if(url === "shoplist/get") {
+    const id = args.at(2).id
+    const response = await fetch(mockBaseUri + "shoplist/list.json");
+    const list = await response.json();
+    const shoplist = list.itemList.filter(item => item.id === id);
+    if(!shoplist[0]){
+      const response = await fetch(mockUrl);
+      const temp = await response.json();
+      return {...temp}
+    }
+    return {...shoplist[0]}
   } else if(url === "item/update") {
     const dtoIn = args.at(2)
     const response = await fetch(mockUrl);

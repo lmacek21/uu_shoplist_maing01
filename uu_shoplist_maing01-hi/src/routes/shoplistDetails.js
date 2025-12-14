@@ -1,13 +1,16 @@
 //@@viewOn:imports
-import { createVisualComponent, useSession } from "uu5g05";
+import { createVisualComponent, useSession, useLsi } from "uu5g05";
 import { useSubAppData, useSystemData } from "uu_plus4u5g02";
-import { withRoute } from "uu_plus4u5g02-app";
 import { Text } from "uu5g05-elements";
+import importLsi from "../lsi/import-lsi";
 
 import Config from "./config/config.js";
 import RouteBar from "../core/route-bar";
 import { RouteController } from "uu_plus4u5g02-app";
 import ItemListProvider from "../bricks/items/item-list-provider.js";
+import ShoplistMemberProvider from "../bricks/shoplist/shoplist-member-provider.js";
+import ShoplistMemberView from "../bricks/shoplist/shoplist-member-view.js";
+import AddMemberView from "../bricks/shoplist/add-member-view.js";
 import ItemListView from "../bricks/items/item-list-view.js";
 import ItemCreateView from "../bricks/items/create-view.js";
 
@@ -26,20 +29,24 @@ const Css = {
 
 let ShoplistDetails = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "Items",
+  uu5Tag: Config.TAG + "ShoplistDetails",
   //@@viewOff:statics
 
  render(props) {
     //@@viewOn:private
     const id = props.params.id
     const ownerId = props.params.ownerId
+    const member = props.params.member
+    console.log(member)
 
     const subAppDataObject = useSubAppData();
     const systemDataObject = useSystemData();
     const { identity } = useSession();
     
     const profileList = systemDataObject.data.profileData.uuIdentityProfileList;
-    const canCreate = profileList.includes("Authorities") || profileList.includes("Executives");  
+    const canModify = profileList.includes("Authorities") || (profileList.includes("Executives") && (ownerId === identity.uuIdentity));
+    
+    const lsi = useLsi(importLsi, [ShoplistDetails.uu5Tag]);
     
     //@@viewOff:private
     //@@viewOn:render
@@ -53,9 +60,9 @@ let ShoplistDetails = createVisualComponent({
               <div className={Css.container()}>
                 <div className={Css.btnmenu()}>
                 <Text category="interface" segment="title" type="major" significance="common" colorScheme="building" className={Css.heading()}>
-                           Item List
+                           {lsi.items}
                         </Text>
-                {canCreate && (
+                {canModify && (
                   <ItemCreateView
                     itemDataList={itemDataList}
                     className={Css.createView()}
@@ -68,22 +75,45 @@ let ShoplistDetails = createVisualComponent({
                     profileList={profileList}
                     identity={identity}
                     ownerId={ownerId}
+                    member={member}
                 />
               </div>
             </RouteController>
           )}
         </ItemListProvider>
-        <Text category="interface" segment="title" type="major" significance="common" colorScheme="building" className={Css.memberText()}>
-          Here Will Be Member List
-        </Text>
+        <ShoplistMemberProvider id={id}>
+          {(shoplistDataObject) => (
+            <RouteController routeDataObject={shoplistDataObject}>
+              <div className={Css.container()}>
+                <div className={Css.btnmenu()}>
+                <Text category="interface" segment="title" type="major" significance="common" colorScheme="building" className={Css.heading()}>
+                           {lsi.members}
+                        </Text>
+                {canModify && (
+                  <AddMemberView
+                    shoplistDataObject={shoplistDataObject}
+                    userList={subAppDataObject.data.userList}
+                    className={Css.createView()}
+                    identity={identity}
+                  />
+                )}
+                </div>
+                <ShoplistMemberView 
+                    shoplistDataObject={shoplistDataObject} 
+                    profileList={profileList}
+                    identity={identity}
+                    ownerId={ownerId}
+                />
+              </div>
+            </RouteController>
+          )}
+        </ShoplistMemberProvider>
          </div>
       </>
     );
     //@@viewOff:render
   },
 });
-
-ShoplistDetails = withRoute(ShoplistDetails, { authenticated: true });
 
 //@@viewOn:exports
 export { ShoplistDetails };

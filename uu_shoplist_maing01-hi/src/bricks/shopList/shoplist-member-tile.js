@@ -16,8 +16,9 @@ const Css = {
     Config.Css.css({
       display: "flex",
       alignItems: "center",
-      justifyContent: "space-around",
-      width: 240,
+      justifyContent: "center",
+      marginLeft: "auto",
+      marginRight: "15px"
     }),
 
   text: () =>
@@ -42,21 +43,19 @@ function hasManagePermission(ownerId, identity, profileList, member) {
   const isAuthority = profileList.includes("Authorities");
   const isExecutive = profileList.includes("Executives");
   const isOwner = ownerId === identity.uuIdentity;
-  return isAuthority || (isExecutive && isOwner) || (isExecutive && member);
+  return isAuthority || (isExecutive && isOwner) || (isExecutive && member.uuIdentity === identity.uuIdentity);
 }
 //@@viewOff:helpers
 
-const ItemTile = createVisualComponent({
+const ShoplistMemberTile = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "ItemTile",
+  uu5Tag: Config.TAG + "ShoplistMemberTile",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
     userList: PropTypes.array,
-    onUpdate: PropTypes.func,
     onDelete: PropTypes.func,
-    onResolve: PropTypes.func,
     ownerId: PropTypes.string
   },
   //@@viewOff:propTypes
@@ -69,63 +68,32 @@ const ItemTile = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const lsi = useLsi(importLsi, [ItemTile.uu5Tag]);
-    const itemDataObject = props.data;
+    const lsi = useLsi(importLsi, [ShoplistMemberTile.uu5Tag]);
+    const member = props.data;
     
     function handleDelete() {
-        props.onDelete(itemDataObject);
-      }
-    
-    function handleUpdate() {
-        props.onUpdate(itemDataObject);
-      }
-
-    function handleResolve() {
-        props.onResolve(itemDataObject);
+        props.onDelete(member);
       }
     //@@viewOff:private
 
     //@@viewOn:render
     const { elementProps } = Utils.VisualComponent.splitProps(props, Css.main());
-    const item = itemDataObject.data;
-    const canManage = hasManagePermission(props.ownerId, props.identity, props.profileList, props.member);
-    const isActionDisabled = itemDataObject.state === "pending";
-    const isResolved = itemDataObject.data.status === "resolved";
+    const canManage = hasManagePermission(props.ownerId, props.identity, props.profileList, member);
 
     return (
       <Box { ...elementProps }>
         <div className={Css.header()}>
-         {!isResolved && ( <Text category="interface" segment="highlight" type="major" significance="common" colorScheme="building" className={Css.text()}>
-            {item.name}
-          </Text> )}
-          {isResolved && ( <Text category="interface" segment="highlight" type="major" significance="common" colorScheme="light-green" className={Css.text()}>
-            {item.name}
-          </Text> )}
-         {!isResolved && canManage && ( <Button
-          icon="mdi-pencil"
-          onClick={handleUpdate}
-          significance="subdued"
-          tooltip={lsi.updateTip}
-          disabled={isActionDisabled}
-          colorScheme="cyan"
-        />)}
+        <Text category="interface" segment="highlight" type="major" significance="common" colorScheme="building" className={Css.text()}>
+            {member.name}
+        </Text>
         </div>
-          {canManage && !isResolved && (
+          {canManage && (
             <div className={Css.buttons()}>
-              <Button
-                icon="mdi-check-bold"
-                onClick={handleResolve}
-                significance="distinct"
-                tooltip={lsi.updateTip}
-                disabled={isActionDisabled}
-                colorScheme="dark-green"
-              >{lsi.resolve}</Button>
               <Button
                 icon="mdi-delete"
                 onClick={handleDelete}
                 significance="distinct"
                 tooltip={lsi.deleteTip}
-                disabled={isActionDisabled}
                 colorScheme="negative"
               >{lsi.delete}</Button>  
           </div>)}
@@ -136,6 +104,6 @@ const ItemTile = createVisualComponent({
 });
 
 //@@viewOn:exports
-export { ItemTile };
-export default ItemTile;
+export { ShoplistMemberTile };
+export default ShoplistMemberTile;
 //@@viewOff:exports

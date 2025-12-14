@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { createVisualComponent, PropTypes, Utils, useLsi } from "uu5g05";
-import { Form, FormText, FormSelect, SubmitButton, CancelButton } from "uu5g05-forms";
+import { Form, FormSelect, SubmitButton, CancelButton } from "uu5g05-forms";
 import Config from "./config/config.js";
 import importLsi from "../../lsi/import-lsi";
 //@@viewOff:imports
@@ -13,17 +13,21 @@ const Css = {
 //@@viewOff:css
 
 //@@viewOn:helpers
-
+function getUserItemList(userList) {
+  return userList.map((user) => {
+    return { value: user.uuIdentity, children: user.name };
+  });
+}
 //@@viewOff:helpers
 
-const CreateForm = createVisualComponent({
+const AddMemberForm = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "CreateForm",
+  uu5Tag: Config.TAG + "AddMemberForm",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    userList: PropTypes.array,
+    userList: PropTypes.object,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
   },
@@ -31,7 +35,6 @@ const CreateForm = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    userList: [],
     onSubmit: () => {},
     onCancel: () => {},
   },
@@ -39,14 +42,14 @@ const CreateForm = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const lsi = useLsi(importLsi, [CreateForm.uu5Tag]);
+    const lsi = useLsi(importLsi, [AddMemberForm.uu5Tag]);
 
     function handleValidate(event) {
-      const { name } = event.data.value;
+      const { member } = event.data.value;
 
-      if (!name) {
+      if (!member) {
         return {
-          message: lsi.textOrImage,
+          message: lsi.required,
         };
       }
     }
@@ -57,7 +60,13 @@ const CreateForm = createVisualComponent({
 
     return (
       <Form {...elementProps} onSubmit={props.onSubmit} onValidate={handleValidate}>
-        <FormText label={lsi.name} name="name" maxLength={255} className={Css.input()} required autoFocus />      
+        <FormSelect
+                  label={lsi.member}
+                  name="member"
+                  itemList={getUserItemList(props.userList)}
+                  className={Css.input()}
+                  required
+                />
         <div className={Css.controls()}>
           <CancelButton onClick={props.onCancel}>{lsi.cancel}</CancelButton>
           <SubmitButton>{lsi.submit}</SubmitButton>
@@ -69,6 +78,6 @@ const CreateForm = createVisualComponent({
 });
 
 //@@viewOn:exports
-export { CreateForm };
-export default CreateForm;
+export { AddMemberForm };
+export default AddMemberForm;
 //@@viewOff:exports

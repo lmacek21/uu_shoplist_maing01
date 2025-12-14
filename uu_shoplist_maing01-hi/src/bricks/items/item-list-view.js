@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { createVisualComponent, PropTypes, Utils, Lsi, useLsi, useState } from "uu5g05";
+import { createVisualComponent, PropTypes, Utils, useLsi, useState } from "uu5g05";
 import { useAlertBus, Text } from "uu5g05-elements";
 import { Grid } from "uu5tilesg02-elements";
 import ItemTile from "./item-tile";
@@ -121,6 +121,7 @@ const ItemListView = createVisualComponent({
       identity: props.identity,
       userList: props.userList,
       ownerId: props.ownerId,
+      member: props.member,
       onDelete: handleDelete,
       onUpdate: handleUpdate,
       onResolve: handleResolve,
@@ -132,7 +133,6 @@ const ItemListView = createVisualComponent({
           data={props.itemDataList.data}
           verticalGap={2}
           tileHeight={50}
-          emptyState={lsi.noJokes}
         >
           <ItemTile {...tileProps} />
         </Grid>
