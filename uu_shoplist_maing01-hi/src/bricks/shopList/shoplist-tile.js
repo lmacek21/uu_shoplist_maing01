@@ -18,7 +18,7 @@ const Css = {
     Config.Css.css({
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "space-between",
       height: 48,
       paddingLeft: 24,
       paddingRight: 24,
@@ -27,8 +27,17 @@ const Css = {
   title: () =>
     Config.Css.css({
       textAlign: "center",
-      // padding: 16,
-      // height: 48,
+    }),
+  
+  countText: () =>
+    Config.Css.css({
+      textAlign: "center",
+    }),
+
+  countNumber: () =>
+    Config.Css.css({
+      marginLeft: 5,
+      textAlign: "center",
     }),
 
   footer: () =>
@@ -110,10 +119,12 @@ const Tile = createVisualComponent({
     const canManage = hasManagePermission(shoplist, props.identity, props.profileList);
     const isActionDisabled = shoplistDataObject.state === "pending";
     const isArchived = shoplistDataObject.data.status === "archived";
+    const noItems = shoplistDataObject.data.itemCount <= 0;
 
     return (
       <Box {...elementProps} onClick={handleDetail}>
         <div className={Css.header()}>
+        <div>
         <Text category="interface" segment="title" type="minor" colorScheme="building" className={Css.title()}>
           {shoplist.name}
         </Text>
@@ -125,6 +136,18 @@ const Tile = createVisualComponent({
           disabled={isActionDisabled}
           colorScheme="cyan"
         />)}
+        </div>
+        <div>
+        <Text category="interface" segment="content" type="large" colorScheme="building" significance="subdued" className={Css.countText()}>
+          {lsi.itemCount}
+        </Text>
+        {noItems && (<Text category="interface" segment="content" type="large" colorScheme="negative" significance="subdued" className={Css.countNumber()}>
+          {shoplist.itemCount}
+        </Text>)}
+        {!noItems && (<Text category="interface" segment="content" type="large" colorScheme="positive" significance="common" className={Css.countNumber()}>
+          {shoplist.itemCount}
+        </Text>)}
+        </div>
         </div>
         <Box significance="distinct" className={Css.footer()}>
           {canManage && !isArchived && (

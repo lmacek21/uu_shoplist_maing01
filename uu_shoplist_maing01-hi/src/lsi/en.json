@@ -49,7 +49,8 @@
   },
   "UuShoplist.Routes.ShoplistDetails": {
     "members": "Member list",
-    "items": "Item list"
+    "items": "Item list",
+    "chart": "Item chart"
   },
   "UuShoplist.Shoplist.DetailModal": {
     "update": "Update",
@@ -80,6 +81,10 @@
     "updateFail": "Item update failed!",
     "heading": "Item list"
   },
+  "UuShoplist.Item.ItemChartView": {
+    "resolved": "Resolved",
+    "unresolved": "Unresolved"
+  },
   "UuShoplist.Shoplist.ShoplistMemberView": {
     "deleteDone": "The member {0} has been deleted.",
     "deleteFail": "Member delete failed!",
@@ -90,7 +95,8 @@
     "archiveBtn": "Archive",
     "deleteBtn": "Delete",
     "deleteTip": "Delete",
-    "updateTip": "Update"
+    "updateTip": "Update",
+    "itemCount": "Number of items: "
   },
   "UuShoplist.Shoplist.ArchiveTile": {
     "archiveBtn": "Archive",

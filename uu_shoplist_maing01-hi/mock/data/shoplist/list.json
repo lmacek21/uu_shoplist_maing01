@@ -13,6 +13,7 @@
       { "uuIdentity": "6502-8811-1", "name": "Dorian Wells" }
     ],
     "status": "open",
+    "itemCount": 6,
     "sys": { "cts": "2019-09-17T12:29:46.205Z", "mts": "2020-04-05T22:45:04.806Z", "rev": 1 },
     "id": "af12c9d82c1a4fe2a1130b91"
   },
@@ -28,6 +29,7 @@
       { "uuIdentity": "3175-7629-4", "name": "Elias Monroe" }
     ],
     "status": "open",
+    "itemCount": 4,
     "sys": { "cts": "2018-07-21T14:22:10.598Z", "mts": "2019-10-10T17:11:44.902Z", "rev": 1 },
     "id": "4d91ae20c87b4c9fabcc99f0"
   },
@@ -43,6 +45,7 @@
       { "uuIdentity": "2033-7188-2", "name": "Isla Davenport" }
     ],
     "status": "open",
+    "itemCount": 2,
     "sys": { "cts": "2021-03-03T08:44:29.201Z", "mts": "2021-11-19T19:33:51.198Z", "rev": 1 },
     "id": "fa10de89223345d09701bc31"
   },
@@ -59,6 +62,7 @@
       { "uuIdentity": "1298-5674-3", "name": "Ava Sinclair" }
     ],
     "status": "open",
+    "itemCount": 5,
     "sys": { "cts": "2022-01-27T10:15:46.991Z", "mts": "2022-12-05T20:09:33.485Z", "rev": 1 },
     "id": "3e0b77ff491c4d0b8f4c4420"
   },
@@ -74,6 +78,7 @@
       { "uuIdentity": "6502-8811-1", "name": "Dorian Wells" }
     ],
     "status": "open",
+    "itemCount": 1,
     "sys": { "cts": "2017-11-12T11:50:09.777Z", "mts": "2018-06-22T13:44:21.331Z", "rev": 1 },
     "id": "98ee7c7cbfc0403db2bd224f"
   },
@@ -90,6 +95,7 @@
       { "uuIdentity": "8634-9044-1", "name": "Grayson Pierce" }
     ],
     "status": "open",
+    "itemCount": 0,
     "sys": { "cts": "2020-06-14T07:33:22.441Z", "mts": "2021-08-01T18:41:58.540Z", "rev": 1 },
     "id": "71d2a4cb64e04c198f18fb82"
   },
@@ -105,6 +111,7 @@
       { "uuIdentity": "9981-2347-2", "name": "Sophie Calder" }
     ],
     "status": "open",
+    "itemCount": 0,
     "sys": { "cts": "2019-04-30T16:28:00.367Z", "mts": "2020-02-17T10:02:49.175Z", "rev": 1 },
     "id": "cf3ea2913e70438e87eba6ce"
   },
@@ -121,6 +128,7 @@
       { "uuIdentity": "2033-7188-2", "name": "Isla Davenport" }
     ],
     "status": "open",
+    "itemCount": 0,
     "sys": { "cts": "2023-02-11T13:19:00.144Z", "mts": "2023-09-28T23:55:42.900Z", "rev": 1 },
     "id": "bba77de4f75c4f329fb5bf11"
   },
@@ -136,6 +144,7 @@
       { "uuIdentity": "4821-9934-1", "name": "Lena Harper" }
     ],
     "status": "open",
+    "itemCount": 0,
     "sys": { "cts": "2016-08-09T05:30:42.887Z", "mts": "2017-03-21T09:10:12.412Z", "rev": 1 },
     "id": "e5f49adf0131497ea36e10bb"
   }

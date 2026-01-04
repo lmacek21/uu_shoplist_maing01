@@ -53,7 +53,8 @@
   },
   "UuShoplist.Routes.ShoplistDetails": {
     "members": "Členové",
-    "items": "Položky"
+    "items": "Položky",
+    "chart": "Graf položek"
   },
   "UuShoplist.Shoplist.ListView": {
     "deleteDone": "Nákupní seznam {0} byl smazán.",
@@ -70,6 +71,10 @@
     "updateFail": "Upravení položky selhalo!",
     "heading": "Položky"
   },
+  "UuShoplist.Item.ItemChartView": {
+    "resolved": "Potvrzené",
+    "unresolved": "Otevřené"
+  },
   "UuShoplist.Shoplist.ShoplistMemberView": {
     "deleteDone": "Položka {0} byla smazána.",
     "deleteFail": "Smazání položky selhalo!",
@@ -80,7 +85,8 @@
     "archiveBtn": "Archivovat",
     "deleteBtn": "Smazat",
     "deleteTip": "Smazat",
-    "updateTip": "Upravit"
+    "updateTip": "Upravit",
+    "itemCount": "Počet položek: "
   },
   "UuShoplist.Shoplist.ArchiveTile": {
     "archiveBtn": "Archivovat",
