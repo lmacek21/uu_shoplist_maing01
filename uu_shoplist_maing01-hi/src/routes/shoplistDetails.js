@@ -19,18 +19,6 @@ import ItemCreateView from "../bricks/items/create-view.js";
 
 //@@viewOn:css
 const Css = {
-  // layout: () => Config.Css.css({ maxWidth: 1280, margin: "0px auto 20px", display: "flex" }),
-  // container: () => Config.Css.css({ maxWidth: 960, margin: "0px 30px 20px", flex: 1, display: "flex" }),
-  // itemcontainer: () => Config.Css.css({ maxWidth: 640, margin: "0px 30px 20px", flex: 1 }),
-  // chartcontainer: () => Config.Css.css({ maxWidth: 320, margin: "0px 30px 20px", flex: 1 }),
-  // memberContainer: () => Config.Css.css({ maxWidth: 320, margin: "0px 30px 20px", flex: 1 }),
-  // heading: () => Config.Css.css({ margin: "20px", marginRight: "150px", alignItems: "center"}),
-  // memberheading: () => Config.Css.css({ margin: "20px", alignItems: "center"}),
-  // chartheading: () => Config.Css.css({ margin: "20px", display: "flex", alignItems: "center", justifyContent: "center"}),
-  // createView: () => Config.Css.css({ margin: "24px", marginLeft: "auto", flexGrow: 1}),
-  // btnmenu: () => Config.Css.css({ maxWidth: 640, margin: "0px auto", display: "flex", alignItems: "center" }),
-  // memberbtnmenu: () => Config.Css.css({ maxWidth: 320, margin: "0px auto", display: "flex", alignItems: "center" }),
-  // memberText: () => Config.Css.css({ maxWidth: 640, margin: "0px auto", display: "flex", alignItems: "center", justifyContent: "center" }),
   layout: () => Config.Css.css({ maxWidth: 1280, margin: "0px auto 20px", display: "flex", flexWrap: "wrap" }),
   itemcontainer: () => Config.Css.css({  margin: "0px 30px 20px", flex: 1 }),
   chartcontainer: () => Config.Css.css({  maxWidth: 520,margin: "0px 30px 20px", flex: 1 }),
@@ -40,7 +28,6 @@ const Css = {
   chartheading: () => Config.Css.css({ margin: "20px", display: "flex", alignItems: "center", justifyContent: "center"}),
   createView: () => Config.Css.css({ margin: "24px", marginLeft: "auto", flexGrow: 1}),
   btnmenu: () => Config.Css.css({ maxWidth: 640, margin: "0px auto", display: "flex", alignItems: "center" }),
-  memberbtnmenu: () => Config.Css.css({ maxWidth: 320, margin: "0px auto", display: "flex", alignItems: "center" }),
   memberText: () => Config.Css.css({ maxWidth: 640, margin: "0px auto", display: "flex", alignItems: "center", justifyContent: "center" }),
 };
 //@@viewOff:css
@@ -75,7 +62,6 @@ let ShoplistDetails = createVisualComponent({
         <ItemListProvider id={id} ownerId={ownerId}>
           {(itemDataList) => (
             <RouteController routeDataObject={itemDataList}>
-              {/* <div className={Css.container()}> */}
                 <div className={Css.itemcontainer()}>
                 <div className={Css.btnmenu()}>
                 <Text category="interface" segment="title" type="major" significance="common" colorScheme="building" className={Css.heading()}>
@@ -105,7 +91,6 @@ let ShoplistDetails = createVisualComponent({
                     itemDataList={itemDataList} 
                 />
                 </div>
-              {/* </div> */}
             </RouteController>
           )}
         </ItemListProvider>

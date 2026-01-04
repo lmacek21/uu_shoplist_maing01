@@ -1,7 +1,6 @@
 //@@viewOn:imports
 import { createVisualComponent, PropTypes, Utils, useLsi } from "uu5g05";
 import { PieChart } from "uu5chartsg01";
-import { useAlertBus, Text } from "uu5g05-elements";
 import Config from "./config/config.js";
 import importLsi from "../../lsi/import-lsi.js";
 //@@viewOff:imports
